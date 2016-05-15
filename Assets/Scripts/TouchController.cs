@@ -71,7 +71,6 @@ public class TouchController : MonoBehaviour {
 		if (swipe) {
 			transform.localPosition = Vector3.Lerp(transform.localPosition, slideEndPosition, Time.deltaTime*slideSpeed);
 
-			Vector3 targetDir = destination - transform.position;
 			Vector3 lookDirection = slideEndPosition-beganLocalPosition;
 			lookDirection.Normalize();
 			float step = cameraRotateSpeedSlide * Time.deltaTime * (Vector3.Angle(transform.forward, lookDirection)/30);
