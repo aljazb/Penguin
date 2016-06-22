@@ -7,6 +7,8 @@ public class Health : MonoBehaviour {
 	public Text text;
 	public float foodMultiplier;
 	public float decreaseSpeed;
+	public float waterDecreaseSpeed;
+	public bool inWater = false;
 
 	[SerializeField]
 	private float healthStatus;
@@ -14,6 +16,10 @@ public class Health : MonoBehaviour {
 	void Update() {
 		healthStatus -= Time.deltaTime * decreaseSpeed;
 		text.text = (int)healthStatus + "";
+
+		if (inWater) {
+			healthStatus -= Time.deltaTime * waterDecreaseSpeed;
+		}
 	}
 
 	public void eat() {

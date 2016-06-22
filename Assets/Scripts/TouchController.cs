@@ -3,6 +3,8 @@ using System.Collections;
 
 public class TouchController : MonoBehaviour {
 
+	public GameObject model;
+	public PenguinAnimator penguinAnimator;
 	public int maxRayDistance;
 	Vector3 destination;
 	Vector3 origin;
@@ -49,6 +51,7 @@ public class TouchController : MonoBehaviour {
 
 					slideEndPosition = beganLocalPosition + transform.forward*direction.y + transform.right*direction.x;
 
+					penguinAnimator.Slide();
 					swipe = true;
 					isWalking = false;
 				} else {
@@ -64,6 +67,7 @@ public class TouchController : MonoBehaviour {
 					isWalking = true;
 					swipe = false;
 					speedDeduction = 0;
+					penguinAnimator.Walk();
 				}
 			}
 		}
@@ -83,6 +87,7 @@ public class TouchController : MonoBehaviour {
 			}
 			if (Vector3.Distance(destination, transform.position) < offset || speedDeduction > walkSpeed/distance) {
 				isWalking = false;
+				penguinAnimator.StopWalk();
 			}
 			completion += walkSpeed/distance - speedDeduction;
 			transform.position = Vector3.Lerp(origin, destination, completion);
@@ -98,5 +103,7 @@ public class TouchController : MonoBehaviour {
 		Vector3 newPos = transform.position; 
 		newPos.y = Terrain.activeTerrain.SampleHeight(transform.position)+(penguinHeight/2);
 		transform.position = newPos;
+		if (!swipe)
+			model.transform.eulerAngles = new Vector3(0, model.transform.eulerAngles.y, model.transform.eulerAngles.z);
 	}
 }

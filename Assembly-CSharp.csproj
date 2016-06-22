@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\FoodGenerator.cs" />
      <Compile Include="Assets\Scripts\FoodObject.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
+     <Compile Include="Assets\Scripts\PenguinAnimator.cs" />
      <Compile Include="Assets\Scripts\TouchController.cs" />
      <Compile Include="Assets\Scripts\WaterMovement.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
