@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class CollideController : MonoBehaviour {
 
 	public Health health;
+	public Animator canvasAnimator;
 
 	void OnTriggerEnter(Collider col) {
 		if (col.tag == "Food") {
@@ -12,12 +12,14 @@ public class CollideController : MonoBehaviour {
 			health.eat();
 		} else if (col.tag == "Water") {
 			health.inWater = true;
+		} else if (col.tag == "Flag") {
+			canvasAnimator.SetTrigger("Won");
 		}
 	}
-
-	void OnTriggerExit(Collider col) {
-		if (col.tag == "Water") {
-			health.inWater = false;
-		}
-	}
+//
+//	void OnTriggerExit(Collider col) {
+//		if (col.tag == "Water") {
+//			health.inWater = false;
+//		}
+//	}
 }

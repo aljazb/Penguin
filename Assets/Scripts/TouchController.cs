@@ -26,6 +26,8 @@ public class TouchController : MonoBehaviour {
 	Vector2 endedPosition;
 	bool swipe;
 
+	bool startTouch = false;
+
 	Vector2 direction;
 	Vector3 slideEndPosition;
 	Vector3 beganLocalPosition;
@@ -36,6 +38,9 @@ public class TouchController : MonoBehaviour {
 	}
 
 	void Update () {
+		if (!startTouch)
+			return;
+		
 		if (Input.touchCount > 0) {
 			if (Input.GetTouch(0).phase == TouchPhase.Began) {
 				beganPosition = Input.GetTouch(0).position;
@@ -105,5 +110,9 @@ public class TouchController : MonoBehaviour {
 		transform.position = newPos;
 		if (!swipe)
 			model.transform.eulerAngles = new Vector3(0, model.transform.eulerAngles.y, model.transform.eulerAngles.z);
+	}
+
+	public void StartTouch() {
+		startTouch = true;
 	}
 }

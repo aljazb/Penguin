@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\CollideController.cs" />
      <Compile Include="Assets\Scripts\FoodGenerator.cs" />
      <Compile Include="Assets\Scripts\FoodObject.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\PenguinAnimator.cs" />
      <Compile Include="Assets\Scripts\TouchController.cs" />

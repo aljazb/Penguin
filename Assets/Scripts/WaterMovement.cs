@@ -6,12 +6,15 @@ public class WaterMovement : MonoBehaviour {
 	public float increaseSpeed;
 	public float decreaseSpeed;
 	float offset = 0.1f;
+	bool start = false;
 
-	void Start () {
+	public void StartIncrease() {
+		start = true;
 	}
 
 	void Update () {
-		transform.Translate(0, increaseSpeed * Time.deltaTime, 0);
+		if (start)
+			transform.Translate(0, increaseSpeed * Time.deltaTime, 0);
 	}
 
 	public void decrease(float y) {
